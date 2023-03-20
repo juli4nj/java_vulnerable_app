@@ -3,7 +3,7 @@ name: ChatGPT Code Analysis
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   chatgpt-code-analysis:
