@@ -28,7 +28,7 @@ def chatgpt_code_analysis(directory_path, filename, reports_path):
                             exit_code = 1
                             f.write(suggestions)
 
-if(len(sys.argv) == 3):
+if(len(sys.argv) == 4):
     openai.api_key = sys.argv[3]
     reports_path = sys.argv[2]
     directory_path = sys.argv[1]
