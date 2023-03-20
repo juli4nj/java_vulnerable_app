@@ -24,7 +24,7 @@ jobs:
 
       - name: Run ChatGPT code analysis
         run: |
-          python ${{github.workspace}}/cicd/scripts/chatgpt/chatgpt_code_analysis.py
+          python ${{github.workspace}}/cicd/scripts/chatgpt/code_analysis.py
 
       - name: Upload results to GitHub
         uses: actions/upload-artifact@v3
