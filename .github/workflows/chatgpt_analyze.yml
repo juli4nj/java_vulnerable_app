@@ -24,6 +24,7 @@ jobs:
 
       - name: Run ChatGPT code analysis
         continue-on-error: true
+        id: chatgpt_analysis
         run: |
           python ${{github.workspace}}/cicd/scripts/chatgpt/code_analysis.py ${{github.workspace}}/src/main  ${{github.workspace}}/cicd/scripts/chatgpt/reports ${{secrets.OPENAI_API_KEY}}
 
@@ -32,3 +33,7 @@ jobs:
         with:
           name: ChatGPT Results
           path: ${{github.workspace}}/cicd/scripts/chatgpt/reports/*.txt
+
+      - name: Check on failures
+        if: steps.chatgpt_analysis.outcome != 'success'
+        run: exit 1
