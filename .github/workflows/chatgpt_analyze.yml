@@ -1,0 +1,33 @@
+name: ChatGPT Code Analysis
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  chatgpt-code-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run ChatGPT code analysis
+        run: |
+          python chatgpt_code_analysis.py
+
+      - name: Upload results to GitHub
+        uses: actions/upload-artifact@v3
+        with:
+          name: ChatGPT Results
+          path: reports/*.txt
