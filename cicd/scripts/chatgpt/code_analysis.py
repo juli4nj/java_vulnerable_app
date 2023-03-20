@@ -2,7 +2,6 @@ import openai
 import os
 import sys
 
-openai.api_key = "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"
 exit_code = 0
 
 def chatgpt_code_analysis(directory_path, filename):
@@ -29,8 +28,15 @@ def chatgpt_code_analysis(directory_path, filename):
                             exit_code = 1
                             f.write(suggestions)
 
+if(len(sys.argv) == 3):
+    openai.api_key = sys.argv[2]
+    directory_path = sys.argv[1]
+else:
+    print("usage <script_name> <path> <api_key>")
+
+
+
 print("----------------Starting analyze script----------------------")
-directory_path = "../../../src/main"
 filename = "report.txt"
 chatgpt_code_analysis(directory_path, filename)
 print("----------------------Analyzing done----------------------")
