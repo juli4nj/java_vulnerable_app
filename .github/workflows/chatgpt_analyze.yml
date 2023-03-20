@@ -20,11 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r ../scripts/chatgpt/requirements.txt
 
       - name: Run ChatGPT code analysis
         run: |
-          python chatgpt_code_analysis.py
+          python ../scripts/chatgpt/chatgpt_code_analysis.py
 
       - name: Upload results to GitHub
         uses: actions/upload-artifact@v3
