@@ -20,14 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r ${{env.GITHUB_WORKSPACE}}/.github/scripts/chatgpt/requirements.txt
+          pip install -r ${{env.GITHUB_WORKSPACE}}/cicd/scripts/chatgpt/requirements.txt
 
       - name: Run ChatGPT code analysis
         run: |
-          python ${{env.GITHUB_WORKSPACE}}/.github/scripts/chatgpt/chatgpt_code_analysis.py
+          python ${{env.GITHUB_WORKSPACE}}/cicd/scripts/chatgpt/chatgpt_code_analysis.py
 
       - name: Upload results to GitHub
         uses: actions/upload-artifact@v3
         with:
           name: ChatGPT Results
-          path: ${{env.GITHUB_WORKSPACE}}/.github/scripts/chatgpt/reports/*.txt
+          path: ${{env.GITHUB_WORKSPACE}}/cicd/scripts/chatgpt/reports/*.txt
