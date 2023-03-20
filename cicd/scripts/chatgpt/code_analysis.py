@@ -4,7 +4,7 @@ import sys
 
 exit_code = 0
 
-def chatgpt_code_analysis(directory_path, filename):
+def chatgpt_code_analysis(directory_path, filename, reports_path):
     for root, dirs, files in os.walk(directory_path):
         for file_name in files:
             print(file_name)
@@ -23,22 +23,23 @@ def chatgpt_code_analysis(directory_path, filename):
                     )
                     suggestions = response.choices[0].text.strip()
                     if suggestions.startswith("Yes") or suggestions.startswith("yes"):
-                        with open(f"./reports/{file_name}_{filename}", 'w') as f:
+                        with open(f"{reports_path}/{file_name}_{filename}", 'w') as f:
                             global exit_code
                             exit_code = 1
                             f.write(suggestions)
 
 if(len(sys.argv) == 3):
-    openai.api_key = sys.argv[2]
+    openai.api_key = sys.argv[3]
+    reports_path = sys.argv[2]
     directory_path = sys.argv[1]
 else:
-    print("usage <script_name> <path> <api_key>")
+    print("usage <script_name> <code_path> <reports_path> <api_key>")
 
 
 
 print("----------------Starting analyze script----------------------")
 filename = "report.txt"
-chatgpt_code_analysis(directory_path, filename)
+chatgpt_code_analysis(directory_path, filename, reports_path)
 print("----------------------Analyzing done----------------------")
 if exit_code == 1:
     print("Vulnerabilities found, see report")
