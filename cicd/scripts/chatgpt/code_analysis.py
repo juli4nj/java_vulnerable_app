@@ -22,6 +22,9 @@ def chatgpt_code_analysis(directory_path, filename, reports_path):
                         temperature=0.5,
                     )
                     suggestions = response.choices[0].text.strip()
+                    if not os.path.exists(reports_path):
+                        os.makedirs(reports_path)
+
                     if suggestions.startswith("Yes") or suggestions.startswith("yes"):
                         with open(f"{reports_path}/{file_name}_{filename}", 'w') as f:
                             global exit_code

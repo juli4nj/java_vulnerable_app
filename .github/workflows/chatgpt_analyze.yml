@@ -23,8 +23,6 @@ jobs:
           pip install -r ${{github.workspace}}/cicd/scripts/chatgpt/requirements.txt
 
       - name: Run ChatGPT code analysis
-        env:
-          API_KEY: ${{secrets.OPENAI_API_KEY}}
         run: |
           python ${{github.workspace}}/cicd/scripts/chatgpt/code_analysis.py ${{github.workspace}}/src/main  ${{github.workspace}}/cicd/scripts/chatgpt/reports ${{secrets.OPENAI_API_KEY}}
 
