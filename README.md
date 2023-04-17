@@ -13,7 +13,7 @@ The following vulnerabilities and code smells are included on purpose:
  - Weak Password
  - Deserialization of Untrusted Data
  - SQL Injection
- - Inproper/Missing Input Validation
+ - Improper/Missing Input Validation
  - Log4Shell Vulnerability (Vulnerable Log4J version)
 
 

@@ -12,7 +12,7 @@ def chatgpt_code_analysis(directory_path, filename, reports_path):
                 file_path = os.path.join(root, file_name)
                 with open(file_path, 'r') as file:
                     code = file.read()
-                    prompt = f"Are there any vulnerabilities or code smells in the following code:\n\n{code}\n\n. if yes, respond with yes, followed by the description."
+                    prompt = f"Are there any vulnerabilities or code smells in the following code:\n\n{code}\n\n. if yes, respond with yes, and include further description."
                     response = openai.Completion.create(
                         engine="text-davinci-002",
                         prompt=prompt,
